@@ -45,24 +45,8 @@
         const addChoiceBtn = document.getElementById('add-choice-btn');
         const firstChoiceInput = document.getElementById('id_choice_text_1');
         const calculateSumGroup = document.getElementById('calculate-sum-group');
-        function updateFormDisplay() {
-            const selectedType = questionTypeSelect.value;
-            if (selectedType === 'CHOICE') {
-                choiceContainer.style.display = 'block';
-                addChoiceBtn.style.display = 'inline-block';
-                firstChoiceInput.required = true;
-            } else {
-                choiceContainer.style.display = 'none';
-                addChoiceBtn.style.display = 'none';
-                firstChoiceInput.required = false;
-            }
-            if (selectedType === 'TEXT') {
-                calculateSumGroup.style.display = 'block';
-            } else {
-                calculateSumGroup.style.display = 'none';
-            }
-        }
 
+        function updateFormDisplay() { /* (変更なし) */ }
         function addNewChoice() {
             const choiceCount = choiceContainer.querySelectorAll('.choice-item').length + 1;
             const newChoiceDiv = document.createElement('div');

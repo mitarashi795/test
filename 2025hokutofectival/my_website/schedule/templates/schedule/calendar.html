@@ -18,11 +18,8 @@
     .event-editable.event-incomplete:hover { background-color: #ffcdd2; }
     .event-editable.event-completed:hover { background-color: #b2ebf2; }
     .event-readonly { background-color: #f5f5f5; color: #555; cursor: default; border-left-color: #ccc; }
-    /* 編集不可の完了イベントは灰色 */
     .event-readonly.event-completed { background-color: #f5f5f5; color: #555; border-left-color: #ccc; }
-    /* 編集不可の未完了イベントは赤色 (編集可能と同じ色) */
     .event-readonly.event-incomplete { background-color: #ffebee; color: #c62828; border-left-color: #c62828; }
-
 </style>
 
 <div class="calendar-container">
@@ -51,18 +48,15 @@
                         {% for event in events %}
                             {% if event.end_time.date == day %}
                                 {% if event.created_by_id == request.session.login_request_id %}
-                                    <a href="{% url 'event_edit' event.pk %}"
-                                       class="event event-editable {% if event.completed %}event-completed{% else %}event-incomplete{% endif %}"
-                                       title="({{ event.created_by.display_role }}): {{ event.title }}">
+                                    <a href="{% url 'event_edit' event.pk %}" class="event event-editable {% if event.completed %}event-completed{% else %}event-incomplete{% endif %}" title="({{ event.created_by.display_role }}): {{ event.title }}">
                                         ({{ event.created_by.display_role }}): {{ event.title }} {% if event.completed %}(完了){% endif %}
                                     </a>
                                 {% else %}
-                                    <div class="event event-readonly {% if event.completed %}event-completed{% else %}event-incomplete{% endif %}"
-                                         title="({{ event.created_by.display_role }}): {{ event.title }}">
+                                    <div class="event event-readonly {% if event.completed %}event-completed{% else %}event-incomplete{% endif %}" title="({{ event.created_by.display_role }}): {{ event.title }}">
                                         ({{ event.created_by.display_role }}): {{ event.title }} {% if event.completed %}(完了){% endif %}
                                     </div>
                                 {% endif %}
-                                {% endif %}
+                            {% endif %}
                         {% endfor %}
                     </td>
                     {% endfor %}
